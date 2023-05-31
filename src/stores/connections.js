@@ -31,6 +31,11 @@ export const useConnectionStore = defineStore('connections', () => {
         }
     }
 
+    function deleteConnection(connection) {
+        connections.value = connections.value.filter(con => con.name !== connection.name)
+        localStorage.setItem("connections", JSON.stringify(connections.value))
+    }
+
     function addConnection(connection) {
         connections.value.push(connection)
         localStorage.setItem("connections", JSON.stringify(connections.value))
@@ -56,5 +61,5 @@ export const useConnectionStore = defineStore('connections', () => {
 
     setHiveExampleInLocalStorage();
 
-    return {connections, addConnection, setTopics, getConnection}
+    return {connections, addConnection, setTopics, getConnection, deleteConnection}
 })

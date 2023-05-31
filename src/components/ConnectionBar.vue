@@ -4,6 +4,7 @@ import {storeToRefs} from "pinia";
 
 const connectionStore = useConnectionStore();
 const {connections} = storeToRefs(connectionStore)
+const {deleteConnection} = connectionStore
 </script>
 
 <template>
@@ -13,10 +14,13 @@ const {connections} = storeToRefs(connectionStore)
       <RouterLink to="/" class="container-item">Add Connection</RouterLink>
     </div>
     <nav>
-      <RouterLink v-for="connection in connections" :key="connection" :to="'/connections/' + connection.name">
-        {{ connection.name }}
+      <div id="links" v-for="connection in connections" :key="connection">
+        <RouterLink :to="'/connections/' + connection.name" class="container-item">
+          {{ connection.name }}
+        </RouterLink>
+        <button class="container-item" @click="deleteConnection(connection)">Remove</button>
         <br/>
-      </RouterLink>
+      </div>
     </nav>
   </div>
 
@@ -36,6 +40,11 @@ const {connections} = storeToRefs(connectionStore)
 
 .container-item {
   padding: 5px
+}
+
+#links {
+  display: inline-flex;
+  flex-direction: row;
 }
 
 .stretch {
