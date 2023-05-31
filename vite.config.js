@@ -11,5 +11,8 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url)),
       mqtt: 'mqtt/dist/mqtt.js'
     }
+  },
+  server: {
+    port: 3000
   }
 })

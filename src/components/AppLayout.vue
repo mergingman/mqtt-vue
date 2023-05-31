@@ -33,7 +33,7 @@ const connections = reactive(["test", "test1", "test2"])
     display: grid;
     grid-template-areas:    'header header'
                             'sidebar content';
-    grid-template-columns: 20vw 80vw;
+    grid-template-columns: 15vw 85vw;
     grid-template-rows: auto 1fr;
     width: 100vw;
     height: 100vh;
